@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Player\MouseGUI.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerData.cs" />
+     <Compile Include="Assets\Scripts\TMPlayerController.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
      <Compile Include="Assets\Scripts\UI\Resources.cs" />
      <Compile Include="Assets\Scripts\UI\UnitUI.cs" />
