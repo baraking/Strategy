@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff2f65f09bac2545aefe74bfccb5cc0, type: 3}
+  m_Name: Factory1
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: db27b0584b9b10e4ca13e22262243d55, type: 2}
+  health: 20
+  damage: 0
+  price: 0
+  highet: {x: 0, y: 2.5, z: 0}
+  buildTime: 0
+  products:
+  - {fileID: 114365942590992878, guid: 0d8d76f923d87ab4485eff4f0e74ec74, type: 2}
+  forwardSpeed: 0
+  rotationSpeed: 0
+  icon: {fileID: 21300000, guid: a16cb6c3dddcec2439245368108df033, type: 3}
