@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class GameFlowManager : MonoBehaviour
+public class GameFlowManager : NetworkBehaviour
 {
     #region Singleton
     private static GameFlowManager _instance;
@@ -23,6 +24,7 @@ public class GameFlowManager : MonoBehaviour
 
         //Fix This -------------------------------------------------------
         //allUnitsByPlayers = new List<Unit>[players.Length];
+        Instance.players = new Player[2];
         allUnits = new UnitsOfPlayer[2];
         for (int i = 0; i < 2; i++)
         {
@@ -42,12 +44,6 @@ public class GameFlowManager : MonoBehaviour
 
     public void Start()
     {
-        GameFlowManagerData.players = new Player[players.Length];
-        for (int i = 0; i < players.Length; i++)
-        {
-            GameFlowManagerData.players[i] = players[i];
-        }
-
         isGameOver = false;
     }
 

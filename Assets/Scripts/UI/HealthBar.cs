@@ -26,7 +26,7 @@ public class HealthBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        filledHealthBar.fillAmount = unit.health/ maxHealth;
+        
 
 
         //at the moment, it is facing the camera.

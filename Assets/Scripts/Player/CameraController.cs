@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CameraController : MonoBehaviour
+public class CameraController : NetworkBehaviour
 {
     //add zoom with angle change
 

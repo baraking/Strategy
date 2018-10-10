@@ -10,22 +10,26 @@ public class Building : Unit
     public bool startedBuilding;
     public float buildStartTime;
 
-    void Start () {
+    new void Start () {
         base.Start();
         spawnPoint = transform.position+new Vector3(0,0,5);
         startedBuilding = false;
     }
 
-	void Update () {
+	new void Update () {
         base.Update();
         //very temporary!!!
         if (isSelected)
         {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                GetResources(50);
+            }
              if (Input.GetKeyDown(KeyCode.Space))
              {
-                if (GameFlowManagerData.players[player - 1].resources >= unitData.products[0].unitData.price)
+                if (GameFlowManager.Instance.players[player - 1].resources >= unitData.products[0].unitData.price)
                 {
-                    GameFlowManagerData.players[player - 1].resources -= unitData.products[0].unitData.price;
+                    GameFlowManager.Instance.players[player - 1].resources -= unitData.products[0].unitData.price;
                     
                     
                     startedBuilding = true;

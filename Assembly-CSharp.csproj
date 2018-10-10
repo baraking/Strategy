@@ -54,7 +54,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameManager\GameFlowManager.cs" />
-     <Compile Include="Assets\Scripts\GameManager\GameFlowManagerData.cs" />
      <Compile Include="Assets\Scripts\Player\CameraController.cs" />
      <Compile Include="Assets\Scripts\Player\MouseController.cs" />
      <Compile Include="Assets\Scripts\Player\MouseGUI.cs" />

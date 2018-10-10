@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Unit : MonoBehaviour {
+public class Unit : NetworkBehaviour {
 
     public UnitData unitData;
     public int player;
@@ -18,8 +19,11 @@ public class Unit : MonoBehaviour {
 
     public float minWeaponRange;
 
+    [SyncVar(hook = "TakeDanage")]
     public float health;
     public bool isDestroyed;
+
+    HealthBar healthBar;
 
     public System.Action OnUnitDeath;
 
@@ -32,6 +36,7 @@ public class Unit : MonoBehaviour {
         minWeaponRange = FindMinRange(weapons);
         health = unitData.health;
         OnUnitDeath += UnitDeath;
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     public void Update()
@@ -77,6 +82,7 @@ public class Unit : MonoBehaviour {
     public void TakeDanage(float damage)
     {
         health -= damage;
+        healthBar.filledHealthBar.fillAmount = health / unitData.health;
     }
 
     public Unit Produce(Unit unit, Vector3 target)
@@ -91,5 +97,10 @@ public class Unit : MonoBehaviour {
         Destroy(transform.root.gameObject);
         //remove from player's list
         GameFlowManager.Instance.RemoveUnitFromPlayer(this, player);
+    }
+
+    public void GetResources(int amount)
+    {
+        GameFlowManager.Instance.players[player - 1].resources += amount;
     }
 }

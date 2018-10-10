@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Resources : MonoBehaviour {
+public class ResourcesUI : MonoBehaviour {
 
     Player player;
     int resourcesValue;

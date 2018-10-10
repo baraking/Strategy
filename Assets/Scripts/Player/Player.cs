@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
         cameraController = GetComponent<CameraController>();
         //playerData = mouseController.playerData;
         resources = 1000;
+        GameFlowManager.Instance.players[playerData.playerNumber - 1] = this;
     }
 	
 	void Update () {

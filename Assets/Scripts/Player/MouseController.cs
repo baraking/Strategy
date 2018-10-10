@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class MouseController : MonoBehaviour {
+public class MouseController : NetworkBehaviour
+{
 
     public PlayerData playerData;
     public new Camera camera;
