@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
+//using UnityEngine.Networking;
 
-public class Unit : NetworkBehaviour {
+public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public UnitData unitData;
     public int player;
 
     public bool isSelected;
     public Vector3 target;
-    public enum Command { Move, Attack };
+    public enum Command { Move, Attack, Gather };
 
     public Weapon[] weapons;
 
@@ -19,7 +19,7 @@ public class Unit : NetworkBehaviour {
 
     public float minWeaponRange;
 
-    [SyncVar(hook = "TakeDanage")]
+    //[SyncVar(hook = "TakeDanage")]
     public float health;
     public bool isDestroyed;
 
@@ -66,7 +66,8 @@ public class Unit : NetworkBehaviour {
     {
         if (weapons.Length < 1)
         {
-            return -1;
+            //a weaponless/meele unit
+            return 0;
         }
         float ans = weapons[0].weaponData.range;
         for(int i = 1; i < weapons.Length; i++)

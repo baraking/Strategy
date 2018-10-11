@@ -62,6 +62,7 @@ public class Tank : Unit {
         transform.rotation = Quaternion.LookRotation(new Vector3(direction.x,0,direction.z));
     }
 
+    //change the attack to a unit perhaps?
     public override void Attack(Vector3 target)
     {
         if (minWeaponRange <= Vector3.Distance(transform.position, target))

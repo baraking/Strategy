@@ -131,6 +131,17 @@ public class MouseController : NetworkBehaviour
                         }
                     }
                 }
+                else if(hitInfo.transform.root.tag == "Resources" && Physics.Raycast(mouseRay, out hitInfo, Mathf.Infinity, LayerMask.GetMask("Resources")))
+                {
+                    if(selectedUnits[0] is Worker)
+                    {
+                        foreach (Unit unit in selectedUnits)
+                        {
+                            unit.target = hitInfo.point;
+                            unit.command = (int)Unit.Command.Gather;
+                        }
+                    }
+                }
                 #region Building Spawn Point. Must Improve!
                 /*
                 //Works as only 1 building is selected and nothing else is.

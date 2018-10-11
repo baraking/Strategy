@@ -61,14 +61,17 @@
      <Compile Include="Assets\Scripts\Player\PlayerData.cs" />
      <Compile Include="Assets\Scripts\TMPlayerController.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
-     <Compile Include="Assets\Scripts\UI\Resources.cs" />
+     <Compile Include="Assets\Scripts\UI\ResourcesUI.cs" />
      <Compile Include="Assets\Scripts\UI\UnitUI.cs" />
      <Compile Include="Assets\Scripts\Units\Building.cs" />
+     <Compile Include="Assets\Scripts\Units\Resources.cs" />
+     <Compile Include="Assets\Scripts\Units\ResourcesData.cs" />
      <Compile Include="Assets\Scripts\Units\Tank.cs" />
      <Compile Include="Assets\Scripts\Units\Unit.cs" />
      <Compile Include="Assets\Scripts\Units\UnitData.cs" />
      <Compile Include="Assets\Scripts\Units\Weapon.cs" />
      <Compile Include="Assets\Scripts\Units\WeaponData.cs" />
+     <Compile Include="Assets\Scripts\Units\Worker.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>D:/Projects/Unity Projects/Strategy/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
