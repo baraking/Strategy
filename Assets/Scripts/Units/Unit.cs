@@ -64,10 +64,10 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public float FindMinRange(Weapon[] weapons)
     {
-        if (weapons.Length < 1)
+        if (weapons == null || weapons.Length < 1) 
         {
             //a weaponless/meele unit
-            return 0;
+            return 1.2f;
         }
         float ans = weapons[0].weaponData.range;
         for(int i = 1; i < weapons.Length; i++)

@@ -135,9 +135,10 @@ public class MouseController : NetworkBehaviour
                 {
                     if(selectedUnits[0] is Worker)
                     {
-                        foreach (Unit unit in selectedUnits)
+                        foreach (Worker unit in selectedUnits)
                         {
                             unit.target = hitInfo.point;
+                            unit.resourcesTarget = hitInfo.transform.root.GetComponent(typeof(Resources)) as Resources;
                             unit.command = (int)Unit.Command.Gather;
                         }
                     }
