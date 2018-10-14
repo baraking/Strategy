@@ -91,6 +91,11 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
         return Instantiate(unit, target+unit.unitData.highet, Quaternion.identity);
     }
 
+    public virtual void ProduceUnit(int index)
+    {
+        Debug.Log("I have no units. try doing this for a building");
+    }
+
     void UnitDeath()
     {
         isDestroyed = true;

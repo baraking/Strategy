@@ -6,15 +6,18 @@ using UnityEngine.UI;
 public class UnitUI : MonoBehaviour {
 
     public GameObject[] unitUI;
-    MouseController selectedUnits;
+    public MouseController selectedUnits;
     public int numOfUnits;
 
     public Texture2D[] icons;
     public GameObject unitIcon;
 
+    ProductButton[] products;
+
     void Start()
     {
         selectedUnits = transform.root.GetComponentInChildren(typeof(MouseController)) as MouseController;
+        products = unitUI[0].GetComponentsInChildren<ProductButton>();
     }
 
 	void Update () {
@@ -29,7 +32,19 @@ public class UnitUI : MonoBehaviour {
             //string name = "Assets/Artwork/" + selectedUnits.selectedUnits[0].unitData.icon.name + ".png";
             //Debug.Log(name);
             //unitIcon = icons[0];
-            for(int i = 0; i < icons.Length; i++)
+            for (int i = 0; i < products.Length; i++)
+            {
+                if (i < selectedUnits.selectedUnits[0].unitData.products.Length)
+                {
+                    products[i].AddUnit(selectedUnits.selectedUnits[0].unitData.products[i], i);
+                }
+                else
+                {
+                    products[i].RemoveUnit();
+                }
+            }
+
+            for (int i = 0; i < icons.Length; i++)
             {
                 if (selectedUnits.selectedUnits[0].unitData.icon.name.Equals(icons[i].name))
                 {
@@ -37,6 +52,8 @@ public class UnitUI : MonoBehaviour {
                     return;
                 }
             }
+
+
             
         }
     }

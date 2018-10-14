@@ -10,10 +10,13 @@ public class Building : Unit
     public bool startedBuilding;
     public float buildStartTime;
 
+    int index;
+
     new void Start () {
         base.Start();
         spawnPoint = transform.position+new Vector3(0,0,5);
         startedBuilding = false;
+        index = 0;
     }
 
 	new void Update () {
@@ -25,42 +28,42 @@ public class Building : Unit
             {
                 GetResources(50);
             }
-             if (Input.GetKeyDown(KeyCode.Space))
-             {
-                if (GameFlowManager.Instance.players[player - 1].resources >= unitData.products[0].unitData.price)
-                {
-                    GameFlowManager.Instance.players[player - 1].resources -= unitData.products[0].unitData.price;
-                    
-                    
-                    startedBuilding = true;
-                    buildStartTime = Time.time;
-                    Debug.Log("Building a Unit.");
-                }
-                else
-                {
-                    Debug.Log("We don't have enough resources.");
-                }
-                
-             }
+        }
 
-            if (startedBuilding)
+        if (startedBuilding)
+        {
+            if (Time.time - buildStartTime >= unitData.products[index].unitData.buildTime)
             {
-                if(Time.time-buildStartTime>= unitData.products[0].unitData.buildTime)
-                {
-                    myUnit = Produce(unitData.products[0], spawnPoint - unitData.highet);
-                    Debug.Log("A new unit has been built.");
-                    startedBuilding = false;
-                }
-                
-            
-
+                myUnit = Produce(unitData.products[index], spawnPoint - unitData.highet);
+                Debug.Log("A new unit has been built.");
+                startedBuilding = false;
+            }
             //after the unit is ready
             //myUnit.target = spawnPoint;
             //myUnit.SetTarget(spawnPoint);
             //myUnit.command = (int)Unit.Command.Move;
-            }
         }
 
-	}
+    }
+
+    public override void ProduceUnit(int newIndex)
+    {
+        if (!startedBuilding)
+        {
+            if (GameFlowManager.Instance.players[player - 1].resources >= unitData.products[newIndex].unitData.price)
+            {
+                GameFlowManager.Instance.players[player - 1].resources -= unitData.products[newIndex].unitData.price;
+
+                startedBuilding = true;
+                buildStartTime = Time.time;
+                index = newIndex;
+                Debug.Log("Building a Unit.");
+            }
+            else
+            {
+                Debug.Log("We don't have enough resources.");
+            }
+        }
+    }
 
 }
