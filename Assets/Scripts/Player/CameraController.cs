@@ -30,8 +30,15 @@ public class CameraController : NetworkBehaviour
     private Quaternion rotation;
     private Vector3 position;
 
-    void Start() { Init(); }
-    void OnEnable() { Init(); }
+    MouseController mouseController;
+
+    void Start() {
+        Init();
+        mouseController=transform.root.GetComponentInChildren(typeof(MouseController)) as MouseController;
+    }
+    void OnEnable() {
+        Init();
+    }
 
     public void Init()
     {
@@ -60,6 +67,19 @@ public class CameraController : NetworkBehaviour
     /*
      * Camera logic on LateUpdate to only update after all character movement logic has been handled. 
      */
+     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))//focus
+        {
+            Debug.Log("Pressed F");
+            if (mouseController.selectedUnits[0] != null)
+            {
+                //fixed Vector, should change obviously
+                target.position = mouseController.selectedUnits[0].transform.position + new Vector3(0, 8.8f, 0);
+            }
+        }
+    }
+
     void LateUpdate()
     {
         target.rotation = transform.rotation;

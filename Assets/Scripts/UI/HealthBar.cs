@@ -12,19 +12,20 @@ public class HealthBar : MonoBehaviour {
 
     public Image filledHealthBar;
     public GameObject emptyHealthBar;
+    public Text groupNumber;
+
     public Unit unit;
 
     float maxHealth;
 
-    // Use this for initialization
     void Start () {
         
         maxHealth = unit.unitData.health;
 
         cameraToLookAt = FindObjectOfType<Camera>();
+        SetGroupNumberUI(unit.group);
     }
-	
-	// Update is called once per frame
+
 	void Update () {
         
 
@@ -37,5 +38,10 @@ public class HealthBar : MonoBehaviour {
         transform.LookAt(cameraToLookAt.transform.position - v);
         transform.Rotate(0, 180, 0);
         #endregion
+    }
+
+    public void SetGroupNumberUI(int newGroupNumber)
+    {
+        groupNumber.text = newGroupNumber.ToString();
     }
 }

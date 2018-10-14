@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public int command;
     public int lastClicked;
+    public int group;
 
     public float minWeaponRange;
 
@@ -31,12 +32,12 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
     {
         //add to player's list
         GameFlowManager.Instance.AddUnitToPlayer(this, player);
-
         target = transform.position;
         minWeaponRange = FindMinRange(weapons);
         health = unitData.health;
         OnUnitDeath += UnitDeath;
         healthBar = GetComponentInChildren<HealthBar>();
+        SetGroupNumber(0);
     }
 
     public void Update()
@@ -45,6 +46,11 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
         {
             OnUnitDeath();
         }
+    }
+
+    public void SetGroupNumber(int gruopNumber)
+    {
+        group = gruopNumber;
     }
 
     public virtual void Move(Vector3 target)
