@@ -50,7 +50,9 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public void SetGroupNumber(int gruopNumber)
     {
+        //GameFlowManager.Instance.players[player - 1].allUnitsByGroup[group].allUnitsOfPlayers.Remove(this);
         group = gruopNumber;
+        //GameFlowManager.Instance.players[player - 1].allUnitsByGroup[group].allUnitsOfPlayers.Add(this);
     }
 
     public virtual void Move(Vector3 target)

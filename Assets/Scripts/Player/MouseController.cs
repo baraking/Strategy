@@ -170,6 +170,17 @@ public class MouseController : NetworkBehaviour
             }
                 
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                foreach (Unit unit in selectedUnits)
+                {
+                    unit.SetGroupNumber(1);
+                }
+            }
+        }
     }
 
     void OnGUI()

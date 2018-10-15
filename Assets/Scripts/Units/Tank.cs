@@ -9,7 +9,7 @@ public class Tank : Unit {
 
     Quaternion previousRotation;
 
-    void Start()
+    new void Start()
     {
         base.Start();
         previousRotation = Quaternion.identity;
@@ -17,7 +17,7 @@ public class Tank : Unit {
         unit = GetComponent<Unit>();
     }
 
-    void Update()
+    new void Update()
     {
         base.Update();
         target = GetComponent<Unit>().target;
