@@ -467,7 +467,7 @@ MonoBehaviour:
   - {fileID: 114337649749382392}
   command: 0
   lastClicked: 0
-  group: 1
+  group: 0
   minWeaponRange: 0
   health: 0
   isDestroyed: 0
