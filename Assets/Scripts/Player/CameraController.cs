@@ -75,7 +75,7 @@ public class CameraController : NetworkBehaviour
             if (mouseController.selectedUnits[0] != null)
             {
                 //fixed Vector, should change obviously
-                target.position = mouseController.selectedUnits[0].transform.position + new Vector3(0, 8.8f, 0);
+                target.position = new Vector3(mouseController.selectedUnits[0].transform.position.x, transform.position.y, mouseController.selectedUnits[0].transform.position.z);
             }
         }
     }

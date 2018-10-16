@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public bool isSelected;
     public Vector3 target;
-    public enum Command { Move, Attack, Gather };
+    public enum Command { Move, Attack, Gather, Build };
 
     public Weapon[] weapons;
 
@@ -52,6 +52,7 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
     {
         //GameFlowManager.Instance.players[player - 1].allUnitsByGroup[group].allUnitsOfPlayers.Remove(this);
         group = gruopNumber;
+        healthBar.SetGroupNumberUI(group);
         //GameFlowManager.Instance.players[player - 1].allUnitsByGroup[group].allUnitsOfPlayers.Add(this);
     }
 

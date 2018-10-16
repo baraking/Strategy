@@ -171,14 +171,24 @@ public class MouseController : NetworkBehaviour
                 
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        /*if (!Input.GetKey(KeyCode.LeftControl))
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            for (int i = 1; i < 10; i++)
             {
-                foreach (Unit unit in selectedUnits)
+                if (Input.GetKeyDown("" + i))
                 {
-                    unit.SetGroupNumber(1);
+                    Debug.Log("Group " + i + " is pressed.");
                 }
+            }
+        }*/
+
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("Good!");
+            foreach (Unit unit in selectedUnits)
+            {
+                Debug.Log("unit is pressed.");
+                unit.SetGroupNumber(1);
             }
         }
     }
