@@ -50,9 +50,9 @@ public class Building : Unit
     {
         if (!startedBuilding)
         {
-            if (GameFlowManager.Instance.players[player - 1].resources >= unitData.products[newIndex].unitData.price)
+            if (GameFlowManager.Instance.players[player.playerData.playerNumber - 1].resources >= unitData.products[newIndex].unitData.price)
             {
-                GameFlowManager.Instance.players[player - 1].resources -= unitData.products[newIndex].unitData.price;
+                GameFlowManager.Instance.players[player.playerData.playerNumber - 1].resources -= unitData.products[newIndex].unitData.price;
 
                 startedBuilding = true;
                 buildStartTime = Time.time;

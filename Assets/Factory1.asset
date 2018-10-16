@@ -21,6 +21,7 @@ MonoBehaviour:
   delayTime: 0
   products:
   - {fileID: 114365942590992878, guid: 0d8d76f923d87ab4485eff4f0e74ec74, type: 2}
+  - {fileID: 114871513233237644, guid: 76e1d5ae4fede9544b1e6953ca06dcb0, type: 2}
   forwardSpeed: 0
   rotationSpeed: 0
   icon: {fileID: 21300000, guid: 85dfd0cfcba06194f93f5b09a77b8a9b, type: 3}

@@ -15,18 +15,22 @@ public class Player : MonoBehaviour {
 
     public int resources;
 
-    void Start () {
+    void Awake () {
         isDefeated = false;
         mouseController = GetComponent<MouseController>();
         cameraController = GetComponent<CameraController>();
         //playerData = mouseController.playerData;
         resources = 1000;
-        GameFlowManager.Instance.players[playerData.playerNumber - 1] = this;
 
         allUnitsByGroup = new GameFlowManager.UnitsOfPlayer[NUM_OF_GROUPS];
         for (int i = 0; i < NUM_OF_GROUPS; i++)
         {
             allUnitsByGroup[i] = new GameFlowManager.UnitsOfPlayer();
         }
+    }
+
+    void Start()
+    {
+        GameFlowManager.Instance.players[playerData.playerNumber - 1] = this;
     }
 }

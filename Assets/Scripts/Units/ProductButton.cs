@@ -27,6 +27,7 @@ public class ProductButton : MonoBehaviour {
 
     public void OnButtonPress()
     {
+        Debug.Log(unitUI);
         unitUI.selectedUnits.selectedUnits[0].ProduceUnit(myIndex);
     }
 }

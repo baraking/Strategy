@@ -6,7 +6,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public UnitData unitData;
-    public int player;
+    public Player player;
 
     public bool isSelected;
     public Vector3 target;
@@ -31,7 +31,7 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
     public void Start()
     {
         //add to player's list
-        GameFlowManager.Instance.AddUnitToPlayer(this, player);
+        GameFlowManager.Instance.AddUnitToPlayer(this, player.playerData.playerNumber);
         target = transform.position;
         minWeaponRange = FindMinRange(weapons);
         health = unitData.health;
@@ -50,10 +50,10 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public void SetGroupNumber(int gruopNumber)
     {
-        //GameFlowManager.Instance.players[player - 1].allUnitsByGroup[group].allUnitsOfPlayers.Remove(this);
+        player.allUnitsByGroup[group].allUnitsOfPlayers.Remove(this);
         group = gruopNumber;
         healthBar.SetGroupNumberUI(group);
-        //GameFlowManager.Instance.players[player - 1].allUnitsByGroup[group].allUnitsOfPlayers.Add(this);
+        player.allUnitsByGroup[group].allUnitsOfPlayers.Add(this);
     }
 
     public virtual void Move(Vector3 target)
@@ -97,7 +97,9 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public Unit Produce(Unit unit, Vector3 target)
     {
-        return Instantiate(unit, target+unit.unitData.highet, Quaternion.identity);
+        Unit newUnit= Instantiate(unit, target+unit.unitData.highet, Quaternion.identity);
+        newUnit.player = this.player;
+        return newUnit;
     }
 
     public virtual void ProduceUnit(int index)
@@ -111,11 +113,11 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
         Debug.Log(gameObject.name + " Has died.");
         Destroy(transform.root.gameObject);
         //remove from player's list
-        GameFlowManager.Instance.RemoveUnitFromPlayer(this, player);
+        GameFlowManager.Instance.RemoveUnitFromPlayer(this, player.playerData.playerNumber);
     }
 
     public void GetResources(int amount)
     {
-        GameFlowManager.Instance.players[player - 1].resources += amount;
+        GameFlowManager.Instance.players[player.playerData.playerNumber - 1].resources += amount;
     }
 }

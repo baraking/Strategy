@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class MouseController : NetworkBehaviour
 {
-
+    public Player thisPlayer;
     public PlayerData playerData;
     public new Camera camera;
     public int command;//enum from unit
@@ -22,6 +22,7 @@ public class MouseController : NetworkBehaviour
 
     // Use this for initialization
     void Start () {
+        thisPlayer = transform.root.GetComponent(typeof(Player)) as Player;
         selectedUnits = new List<Unit>();
         numOfClicks = 0;
         timeOfClick = 0;
@@ -167,10 +168,9 @@ public class MouseController : NetworkBehaviour
                         unit.command = (int)Unit.Command.Move;
                     }
                 }
-            }
-                
+            }       
         }
-
+        #region UnitsGrouping
         /*if (!Input.GetKey(KeyCode.LeftControl))
         {
             for (int i = 1; i < 10; i++)
@@ -181,16 +181,22 @@ public class MouseController : NetworkBehaviour
                 }
             }
         }*/
-
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKey(KeyCode.LeftShift) && (Input.GetKeyDown(KeyCode.Alpha1)))
         {
-            Debug.Log("Good!");
             foreach (Unit unit in selectedUnits)
             {
-                Debug.Log("unit is pressed.");
                 unit.SetGroupNumber(1);
             }
         }
+        else if (!Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedUnits = new List<Unit>();
+            foreach (Unit unit in thisPlayer.allUnitsByGroup[1].allUnitsOfPlayers)
+            {
+                selectedUnits.Add(unit);
+            }
+        }
+        #endregion
     }
 
     void OnGUI()
