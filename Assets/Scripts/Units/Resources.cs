@@ -13,17 +13,21 @@ public class Resources : MonoBehaviour {
 
     public int Depolt(int amount)
     {
-        if (value - amount < 0)
-        {
-            amount = value;
-        }
-        value -= amount;
-        if (value <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        if (this != null)
+        { 
+            if (value - amount < 0)
+            {
+                amount = value;
+            }
+            value -= amount;
+            if (value <= 0)
+            {
+                Destroy(this.gameObject);
+            }
 
-        return amount;
+            return amount;
+        }
+        return -1;
     }
 
 }

@@ -16,12 +16,13 @@ MonoBehaviour:
   damage: 0
   price: 1000
   highet: {x: 0, y: 2.5, z: 0}
-  buildTime: 10
+  buildTime: 1
   gatherAmount: 0
   delayTime: 0
   products:
   - {fileID: 114365942590992878, guid: 0d8d76f923d87ab4485eff4f0e74ec74, type: 2}
   - {fileID: 114871513233237644, guid: 76e1d5ae4fede9544b1e6953ca06dcb0, type: 2}
+  - {fileID: 114576728546368854, guid: 362f7515480cf76478c0b4c926f3e9c3, type: 2}
   forwardSpeed: 0
   rotationSpeed: 0
   icon: {fileID: 21300000, guid: 85dfd0cfcba06194f93f5b09a77b8a9b, type: 3}

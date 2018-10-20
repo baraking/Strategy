@@ -16,11 +16,11 @@ public class HealthBar : MonoBehaviour {
 
     public Unit unit;
 
-    float maxHealth;
+    //float maxHealth;
 
     void Start () {
         
-        maxHealth = unit.unitData.health;
+        //maxHealth = unit.unitData.health;
 
         cameraToLookAt = FindObjectOfType<Camera>();
         SetGroupNumberUI(unit.group);

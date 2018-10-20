@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Worker : Unit {
+public class Worker : Building {
 
     Unit unit;
     Vector3 direction;
@@ -12,17 +12,26 @@ public class Worker : Unit {
     public Resources resourcesTarget;
     float lastGather;
 
-    // Use this for initialization
-    void Start () {
+    new void Start () {
         base.Start();
         previousRotation = Quaternion.identity;
         direction = Vector3.one;
         unit = GetComponent<Unit>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+	new void Update () {
         base.Update();
+        spawnPoint = transform.position;
+
+        if (startedBuilding)
+        {
+            if (Time.time - buildStartTime >= unitData.products[index].unitData.buildTime)
+            {
+                myUnit = Produce(unitData.products[index], spawnPoint - unitData.highet);
+                Debug.Log("A new unit has been built.");
+                startedBuilding = false;
+            }
+        }
 
         base.Update();
         target = GetComponent<Unit>().target;
@@ -87,6 +96,11 @@ public class Worker : Unit {
 
     public void Gather(Vector3 target)
     {
+        if (target == null)
+        {
+            command = (int)Unit.Command.Move;
+            return;
+        }
         //Debug.Log(Vector3.Distance(transform.position, target));
         if (minWeaponRange <= Vector3.Distance(transform.position, target))
         {
@@ -99,6 +113,11 @@ public class Worker : Unit {
             {
                 lastGather = Time.time;
                 int profit = resourcesTarget.Depolt(unitData.gatherAmount);
+                if (profit < 0)
+                {
+                    command = (int)Unit.Command.Move;
+                    return;
+                }
                 Debug.Log("Worker has Gathered " + profit);
                 GetResources(profit);
             }

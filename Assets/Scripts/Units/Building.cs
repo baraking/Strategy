@@ -10,7 +10,7 @@ public class Building : Unit
     public bool startedBuilding;
     public float buildStartTime;
 
-    int index;
+    public int index;
 
     new void Start () {
         base.Start();
