@@ -56,7 +56,7 @@ public class Worker : Building {
         }
     }
 
-    public override void Move(Vector3 target)
+    public override void Move(Vector3 destination)
     {
         //1: start and finish turning.
         Turn(unit.target);
@@ -96,7 +96,7 @@ public class Worker : Building {
 
     public void Gather(Vector3 target)
     {
-        if (target == null)
+        if (resourcesTarget.Equals(null))
         {
             command = (int)Unit.Command.Move;
             return;

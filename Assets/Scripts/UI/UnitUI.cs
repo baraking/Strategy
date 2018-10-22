@@ -21,7 +21,15 @@ public class UnitUI : MonoBehaviour {
     }
 
 	void Update () {
-        
+
+        #region NullPlayer
+        Player player = transform.root.GetComponent(typeof(Player)) as Player;
+        if (player.playerData.name == "NullPlayer")
+        {
+            return;
+        }
+        #endregion
+
         numOfUnits = selectedUnits.selectedUnits.Count;
         foreach (GameObject ui in unitUI)
         {

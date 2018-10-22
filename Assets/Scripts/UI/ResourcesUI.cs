@@ -13,7 +13,7 @@ public class ResourcesUI : MonoBehaviour {
         player = transform.root.GetComponent<Player>();
     }
 
-	void Update () {
+    void Update () {
         UpdateResources(player.resources);
         //resourcesValue = player.resources;
         //resourcesDisplay.text = resourcesValue.ToString();

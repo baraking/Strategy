@@ -32,6 +32,14 @@ public class MouseController : NetworkBehaviour
 	// Update is called once per frame
 	void Update () {
 
+        #region NullPlayer
+        if (playerData.name == "NullPlayer")
+        {
+            return;
+        }
+        #endregion
+
+
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;

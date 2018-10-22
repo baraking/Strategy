@@ -56,7 +56,7 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
         player.allUnitsByGroup[group].allUnitsOfPlayers.Add(this);
     }
 
-    public virtual void Move(Vector3 target)
+    public virtual void Move(Vector3 destination)
     {
 
     }

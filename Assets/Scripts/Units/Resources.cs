@@ -7,10 +7,6 @@ public class Resources : MonoBehaviour {
     public int value;
     public ResourcesData resourcesData;
 
-	void Start () {
-		
-	}
-
     public int Depolt(int amount)
     {
         if (this != null)

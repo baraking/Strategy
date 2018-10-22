@@ -30,8 +30,7 @@ public class Weapon : MonoBehaviour {
         else
         {
             hasATarget = false;
-            targetLocation = transform.position + transform.root.transform.forward * 2;
-            
+            targetLocation = transform.position + transform.root.transform.forward * 2; 
         }
 
         if (hasATarget || targetLocation != null) 
@@ -69,6 +68,13 @@ public class Weapon : MonoBehaviour {
     public bool LockedOnEnemy()
     {
         //Vector3 aimDirection = targetUnit.transform.position - transform.position;//doesnt consider the highet difference.
+
+        if (targetUnit.Equals(null))
+        {
+            hasATarget = false;
+            return false;
+        }
+
         Vector3 aimDirection = new Vector3(targetUnit.transform.position.x, transform.position.y, targetUnit.transform.position.z) - transform.position;
         float angle = Vector3.Angle(aimDirection, transform.forward);
 

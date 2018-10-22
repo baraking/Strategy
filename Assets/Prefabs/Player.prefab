@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114879171374819294}
-  unitUI: {fileID: 0}
+  unitUI: {fileID: 114573779572250460}
 --- !u!114 &114025827686188690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114162838399921392}
-  unitUI: {fileID: 0}
+  unitUI: {fileID: 114573779572250460}
 --- !u!114 &114064275376567448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114975825098310396}
-  unitUI: {fileID: 0}
+  unitUI: {fileID: 114573779572250460}
 --- !u!114 &114194546779113664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114751200221308566}
-  unitUI: {fileID: 0}
+  unitUI: {fileID: 114573779572250460}
 --- !u!114 &114304051437202576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1391,6 +1391,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 85dfd0cfcba06194f93f5b09a77b8a9b, type: 3}
   - {fileID: 2800000, guid: c7fddcd13956cc041a9f858bab9f6017, type: 3}
   - {fileID: 2800000, guid: 27aa590adf4ffd441bc337019fe21ed8, type: 3}
+  - {fileID: 2800000, guid: f66ad6b397c6e4e418a2cd03d5b949c1, type: 3}
   unitIcon: {fileID: 1741395065858214}
 --- !u!114 &114576347160121618
 MonoBehaviour:
@@ -1519,7 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114778847362008886}
-  unitUI: {fileID: 0}
+  unitUI: {fileID: 114573779572250460}
 --- !u!114 &114685797679230534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1794,7 +1795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 114136428005289048}
-  unitUI: {fileID: 0}
+  unitUI: {fileID: 114573779572250460}
 --- !u!114 &114818501105515836
 MonoBehaviour:
   m_ObjectHideFlags: 1
