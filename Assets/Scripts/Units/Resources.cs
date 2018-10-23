@@ -7,6 +7,11 @@ public class Resources : MonoBehaviour {
     public int value;
     public ResourcesData resourcesData;
 
+    void Start()
+    {
+        GameFlowManager.Instance.allResources.Add(this);
+    }
+
     public int Depolt(int amount)
     {
         if (this != null)
@@ -18,6 +23,7 @@ public class Resources : MonoBehaviour {
             value -= amount;
             if (value <= 0)
             {
+                GameFlowManager.Instance.allResources.Remove(this);
                 Destroy(this.gameObject);
             }
 

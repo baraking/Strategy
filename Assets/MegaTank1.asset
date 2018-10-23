@@ -17,6 +17,7 @@ MonoBehaviour:
   price: 500
   highet: {x: 0, y: 3.2, z: 0}
   buildTime: 5
+  interstRadius: 15
   gatherAmount: 0
   delayTime: 0
   products: []

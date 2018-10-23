@@ -10,7 +10,8 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     public bool isSelected;
     public Vector3 target;
-    public enum Command { Move, Attack, Gather, Build };
+    public enum Command { Move, Attack, Gather, Build }
+    public enum Behavior { CommandOnly, Reactive, Aggresive}
 
     public Weapon[] weapons;
 
@@ -76,7 +77,7 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
         if (weapons == null || weapons.Length < 1) 
         {
             //a weaponless/meele unit
-            return 1.2f;
+            return 2f;
         }
         float ans = weapons[0].weaponData.range;
         for(int i = 1; i < weapons.Length; i++)

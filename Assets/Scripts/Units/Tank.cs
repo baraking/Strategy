@@ -63,8 +63,16 @@ public class Tank : Unit {
     }
 
     //change the attack to a unit perhaps?
+    //if 1 weapon is in range it doesnt always fire.
     public override void Attack(Vector3 target)
     {
+        foreach (Weapon weapon in weapons)
+        {
+            if(weapon.weaponData.range<= Vector3.Distance(transform.position, target))
+            {
+                weapon.Attack(target);
+            }
+        }
         if (minWeaponRange <= Vector3.Distance(transform.position, target))
         {
             Move(target);

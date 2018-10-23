@@ -12,6 +12,8 @@ public class UnitData : ScriptableObject {
     public Vector3 highet;
     public float buildTime;
 
+    public float interstRadius;
+
     public int gatherAmount;
     public float delayTime;
 

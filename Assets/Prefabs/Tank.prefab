@@ -64,6 +64,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1536809566177294
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4616380657565620}
+  m_Layer: 9
+  m_Name: WeaponOriginPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1555634218115474
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +223,19 @@ Transform:
   m_Father: {fileID: 4936213738654172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4616380657565620
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536809566177294}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.915, z: 1.195}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4695915945156392}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4695915945156392
 Transform:
   m_ObjectHideFlags: 1
@@ -220,6 +248,7 @@ Transform:
   m_Children:
   - {fileID: 4522575734628508}
   - {fileID: 4696316954312328}
+  - {fileID: 4616380657565620}
   m_Father: {fileID: 4936213738654172}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -243,8 +272,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1618017666071466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 3.2, z: -10}
+  m_LocalRotation: {x: -0, y: -0.54504496, z: -0, w: 0.83840686}
+  m_LocalPosition: {x: 3.3, y: 3.2000122, z: -12.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4525739365570094}
@@ -252,7 +281,7 @@ Transform:
   - {fileID: 224116166928394634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -66.055, z: 0}
 --- !u!4 &4999165818180030
 Transform:
   m_ObjectHideFlags: 1
@@ -492,6 +521,7 @@ MonoBehaviour:
   targetUnit: {fileID: 0}
   weaponData: {fileID: 11400000, guid: e1b8b34d3bd2e9a49a3ed8c15f2df96a, type: 2}
   lastFired: 0
+  weaponOriginPoint: {fileID: 1536809566177294}
 --- !u!114 &114365942590992878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,7 +534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitData: {fileID: 11400000, guid: d26a4bd64182e4f41b616ff685ce22b4, type: 2}
-  playerNum: 1
   player: {fileID: 0}
   isSelected: 0
   target: {x: 0, y: 0, z: 0}

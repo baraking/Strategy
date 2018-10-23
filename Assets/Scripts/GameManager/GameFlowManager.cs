@@ -30,11 +30,13 @@ public class GameFlowManager : NetworkBehaviour
         {
             allUnits[i] = new UnitsOfPlayer();
         }
+        allResources = new List<Resources>();
     }
     #endregion
 
     public bool isGameOver;
     public Player[] players;
+    public List<Resources> allResources;
 
     [System.Serializable] public class UnitsOfPlayer
     {

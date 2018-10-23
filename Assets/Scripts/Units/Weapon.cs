@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour {
     Quaternion previousRotation;
     public float lastFired;
 
+    public GameObject weaponOriginPoint;
+
     //public Camera camera;
 
     void Start () {
@@ -82,10 +84,18 @@ public class Weapon : MonoBehaviour {
         {
             //Ray ray = camera.ViewportPointToRay(Vector3.zero);
             RaycastHit hitInfo;
+
+
             //Vector3 fwd = transform.TransformDirection(Vector3.forward);
-            //Debug.DrawRay(transform.position-Vector3.up*0.9f, fwd * 50, Color.green);
-            if (Physics.Raycast(transform.position - Vector3.up * 0.9f, aimDirection.normalized,out hitInfo,weaponData.beamRaduis))
+            //Debug.DrawRay(weaponOriginPoint.transform.position, fwd * 50, Color.black);
+
+            //Debug.Log(transform.name + ": " + weaponOriginPoint.transform.position);
+            //Origin point is not calculated from the actual canon.
+            //maybe add the location of the cannons?
+            //distance is now calculated to the center of the target, rather the edge of it.
+            if (Physics.Raycast(weaponOriginPoint.transform.position/*transform.position - Vector3.up * 0.9f*/, aimDirection.normalized,out hitInfo,weaponData.beamRaduis*10))
             {
+                //Debug.Log(transform.name);
                 //Debug.Log(hitInfo.transform.root.name);
                 //Debug.Log((hitInfo.transform.root.GetComponent(typeof(Unit)) as Unit).player);
                 //Debug.Log((transform.root.GetComponent(typeof(Unit)) as Unit).player);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 0.75
   damage: 4
-  range: 6
+  range: 10
   angle: 10
   beamRaduis: 1
   cooldown: 2.5

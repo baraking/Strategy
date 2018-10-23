@@ -12,6 +12,8 @@ public class Worker : Building {
     public Resources resourcesTarget;
     float lastGather;
 
+    public static int NUM_OF_RESOURCES_AUTO_FIND = 5;
+
     new void Start () {
         base.Start();
         previousRotation = Quaternion.identity;
@@ -25,10 +27,12 @@ public class Worker : Building {
 
         if (startedBuilding)
         {
+            command = (int)Command.Build;
             if (Time.time - buildStartTime >= unitData.products[index].unitData.buildTime)
             {
                 myUnit = Produce(unitData.products[index], spawnPoint - unitData.highet);
                 Debug.Log("A new unit has been built.");
+                command = (int)Command.Move;
                 startedBuilding = false;
             }
         }
@@ -36,23 +40,26 @@ public class Worker : Building {
         base.Update();
         target = GetComponent<Unit>().target;
         int caseSwitch = unit.command;
-        switch (caseSwitch)
+        if (unit.command != (int)Command.Build)
         {
-            case 0:
-                Move(target);
-                break;
+            switch (caseSwitch)
+            {
+                case 0:
+                    Move(target);
+                    break;
 
-            case 1:
-                Attack(target);
-                break;
+                case 1:
+                    Attack(target);
+                    break;
 
-            case 2:
-                Gather(target);
-                break;
+                case 2:
+                    Gather(target);
+                    break;
 
-            default:
-                print("Something went wrong!");
-                break;
+                default:
+                    print("Something went wrong!");
+                    break;
+            }
         }
     }
 
@@ -98,10 +105,17 @@ public class Worker : Building {
     {
         if (resourcesTarget.Equals(null))
         {
-            command = (int)Unit.Command.Move;
-            return;
+            if (FindNearbyResources(transform.position, unitData.interstRadius))
+            {
+                return;
+            }
+            else
+            {
+                OnResourcesDeplot();
+            }
         }
         //Debug.Log(Vector3.Distance(transform.position, target));
+        //Debug.Log(target);
         if (minWeaponRange <= Vector3.Distance(transform.position, target))
         {
             Move(target);
@@ -115,12 +129,50 @@ public class Worker : Building {
                 int profit = resourcesTarget.Depolt(unitData.gatherAmount);
                 if (profit < 0)
                 {
-                    command = (int)Unit.Command.Move;
-                    return;
+                    if (FindNearbyResources(transform.position, unitData.interstRadius))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        OnResourcesDeplot();
+                    }
                 }
                 Debug.Log("Worker has Gathered " + profit);
                 GetResources(profit);
             }
         }
+    }
+
+    public void OnResourcesDeplot()
+    {
+        command = (int)Unit.Command.Move;
+        return;
+    }
+
+    public bool FindNearbyResources(Vector3 myPosition, float myIntrestRadius)
+    {
+        List<Resources> possibleResources = new List<Resources>();
+        foreach(Resources resource in GameFlowManager.Instance.allResources)
+        {
+            if (myIntrestRadius >= Vector3.Distance(myPosition, resource.transform.position))
+            {
+                possibleResources.Add(resource);
+            }
+            if (possibleResources.Count >= NUM_OF_RESOURCES_AUTO_FIND)
+            {
+                break;
+            }
+        }
+        if (possibleResources.Count > 0)
+        {
+            int i = Random.Range(0, possibleResources.Count - 1);
+            resourcesTarget = possibleResources[i];
+            target = resourcesTarget.transform.position;
+            //Debug.Log("Found");
+            return true;
+        }
+        //Debug.Log("Not Found");
+        return false;
     }
 }
