@@ -27,6 +27,8 @@ public class Unit : MonoBehaviour/*NetworkBehaviour*/ {
 
     HealthBar healthBar;
 
+    public static int NUM_OF_TARGETS_AUTO_FIND = 3;
+
     public System.Action OnUnitDeath;
 
     public void Start()

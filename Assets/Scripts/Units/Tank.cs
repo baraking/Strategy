@@ -85,4 +85,37 @@ public class Tank : Unit {
             }
         }
     }
+
+    public bool FindNearbyTarget(Vector3 myPosition, float myIntrestRadius)
+    {
+        List<Unit> possibleTargets = new List<Unit>();
+        for(int i = 0; i < GameFlowManager.Instance.players.Length; i++)
+        {
+            if (i != unitData.playerData.playerNumber)
+            {
+                foreach (Unit tmpUnit in GameFlowManager.Instance.allUnits[i].allUnitsOfPlayers)
+                {
+                    if (myIntrestRadius >= Vector3.Distance(myPosition, tmpUnit.transform.position))
+                    {
+                        possibleTargets.Add(tmpUnit);
+                    }
+                    if (possibleTargets.Count >= NUM_OF_TARGETS_AUTO_FIND)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (possibleTargets.Count > 0)
+        {
+            int i = Random.Range(0, possibleTargets.Count - 1);
+            unit = possibleTargets[i];
+            target = unit.transform.position;
+            //Debug.Log("Found");
+            return true;
+        }
+        //Debug.Log("Not Found");
+        return false;
+    }
 }
